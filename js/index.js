@@ -2,11 +2,24 @@ $(document).ready(function(){
 
 	//create new array 'cities' and assign city strings
 	var cities = ['NYC','SF','LA','ATX','SYD'];
-	//use forEach to populate dropdown list with cities array
+	//use forEach to populate dropdown list with cities array.
 	cities.forEach(function(city){
 		$('#city-type').append('<option>' + city + '</option>');
 	});
 
+	//anonymous function that triggers when the dropdown value is changed
+	$('#city-type').change(function(){
+		//create var selectedCity and set it equal to the value of the dropdown
+		var selectedCity = $(this).val();
+		//print the var selectedCity to console for debugging
+		console.log('Selected City = ' + selectedCity);
+		//use .attr to change the class to the selectedCity which has the corresponding background image
+		$('body').attr('class', selectedCity);
+	});
+});
+
+//alternative: dropdown code using conditionals
+/*
 	//anonymous function that triggers when the dropdown is changed
 	$('#city-type').change(function(){
 		//creating variable and assigning it to value of dropdown
@@ -35,17 +48,6 @@ $(document).ready(function(){
 		console.log('Selected City = ' + selectedCity);
 
 	});
-
-/* attempt to change background without conditionals
-
-	$('#city-type').change(function(){
-		//create var selectedCity and set it equal to the value of the dropdown
-		var selectedCity = $(this).val();
-		//print the var selectedCity to console for debugging
-		console.log('Selected City = ' + selectedCity);
-
-		$('option').attr('class', selectedCity);
-	});
 */
 
-});
+
